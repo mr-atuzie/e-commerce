@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { toast } from "react-toastify";
 import { addToFavourites } from "../redux/favoriteSlice";
-import Category from "../components/Category";
+// import Category from "../components/Category";
 
 const Product = ({ simplified }) => {
   const [quantity, setQuantity] = useState(1);
@@ -124,7 +124,7 @@ const Product = ({ simplified }) => {
                       totalPrice: Number(price) * quantity,
                     })
                   }
-                  className="  bg-black  flex items-center justify-between  text-white px-6 py-3 rounded-full"
+                  className="  bg-black  flex items-center justify-between  text-white px-6 py-3 "
                 >
                   Add to Cart
                   <div className=" ml-3">
@@ -142,7 +142,7 @@ const Product = ({ simplified }) => {
                       images,
                     })
                   }
-                  className=" bg-black  flex items-center justify-between text-white px-6 py-3 rounded-full"
+                  className=" bg-black  flex items-center justify-between text-white px-6 py-3 "
                 >
                   Add to Favorites
                   <div className=" ml-3">
@@ -154,12 +154,6 @@ const Product = ({ simplified }) => {
           </div>
         </div>
       </div>
-      <Category
-        cat={category}
-        heading={"similar to"}
-        items={productData}
-        simplified={simplified}
-      />
     </div>
   );
 };

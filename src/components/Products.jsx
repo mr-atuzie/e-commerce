@@ -39,6 +39,22 @@ const Products = ({ simplified }) => {
     setProducts(newProducts);
   };
 
+  const filterPrice = (price) => {
+    let newProducts;
+
+    if (price === "desc") {
+      newProducts = productData.filter((item) => {
+        return item.price <= 9000;
+      });
+    } else {
+      newProducts = productData.filter((item) => {
+        return item.price > 9000;
+      });
+    }
+
+    setProducts(newProducts);
+  };
+
   const hadleClick = () => {
     setProducts(productData);
     setCate("all");
@@ -57,107 +73,106 @@ const Products = ({ simplified }) => {
   };
 
   return (
-    <div className="hidden md:block bg-gray-50 py-16">
-      <div className=" w-[92%] mx-auto ">
-        <h1 className=" font-medium text-2xl mb-4">Featured products</h1>
+    <div className=" bg-gray-50 py-16">
+      <div className=" w-[98%] mx-auto ">
+        {/* <h1 className=" font-medium text-2xl mb-4">General Section</h1> */}
         <div className=" flex flex-col lg:flex-row lg:justify-between">
-          <div className=" bg-white shadow-md p-6 h-fit w-full lg:w-[28%]">
+          <div className=" bg-white  p-6 h-fit w-full lg:w-[28%]">
             {/* categories */}
             <div className="">
               <h1 className="text-lg font-medium text-gray-800">Categories</h1>
-              <div className=" flex items-center flex-wrap gap-2 mt-3">
+              <div className=" flex items-center flex-wrap gap-3 mt-3">
                 <button
                   onClick={hadleClick}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   all
                 </button>
                 <button
                   onClick={() => filterCategory("shoes")}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900   lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   shoes
                 </button>
                 <button
                   onClick={() => filterCategory("shirts")}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900   lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   Shirts
                 </button>
                 <button
                   onClick={() => filterCategory("trousers")}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900   lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   trousers
                 </button>
                 <button
                   onClick={() => filterCategory("Jackets")}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900  lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   jackets
                 </button>
                 <button
                   onClick={() => filterCategory("caps")}
-                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900 w-24 rounded-lg p-4 italic"
+                  className=" capitalize bg-gray-50 border border-gray-300  text-gray-900   lg:w-24 rounded-lg p-2 lg:p-4 italic"
                 >
                   caps
                 </button>
               </div>
             </div>
 
-            <div className=" mt-5">
-              <h1 className="text-lg capitalize font-medium  text-gray-800">
-                Sizes
-              </h1>
+            <div className=" flex justify-between">
+              <div className=" mt-5">
+                <h1 className="text-lg capitalize font-medium  text-gray-800">
+                  Sizes
+                </h1>
 
-              <div className=" flex items-center flex-wrap gap-2 mt-1 ">
-                <select
-                  onChange={(e) => filterSize(e.target.value)}
-                  id="countries"
-                  className="bg-gray-50 border border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500  p-4 italic "
-                >
-                  <option>Sort Clothes by Size</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="2XL">XXL</option>
-                </select>
+                <div className=" flex items-center flex-wrap gap-2 mt-1 ">
+                  <select
+                    onChange={(e) => filterSize(e.target.value)}
+                    id="countries"
+                    className="bg-gray-50 border italic  border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500    p-2 md:p-4"
+                  >
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">XXL</option>
+                  </select>
 
-                <select
-                  onChange={(e) => filterSize(e.target.value)}
-                  id="countries"
-                  className="bg-gray-50 border border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500 p-4 italic "
-                >
-                  <option>Sort Shoes by Size</option>
-                  <option value="45">45</option>
-                  <option value="46">46</option>
-                  <option value="47">47</option>
-                  <option value="48">48</option>
-                  <option value="49">49</option>
-                  <option value="50">50</option>
-                </select>
+                  <select
+                    onChange={(e) => filterSize(e.target.value)}
+                    id="countries"
+                    className="bg-gray-50 border  border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500   p-2 md:p-4 "
+                  >
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className=" mt-5">
+                <h1 className="text-lg capitalize font-medium text-gray-800">
+                  Prices
+                </h1>
+
+                <div className=" flex items-center flex-wrap gap-2 mt-1">
+                  <select
+                    onChange={(e) => filterPrice(e.target.value)}
+                    id="countries"
+                    className="bg-gray-50 border border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500  p-2 md:p-4 italic "
+                  >
+                    <option> Sort by price</option>
+                    <option value="desc">Lowest</option>
+                    <option value="70,999">Hightesst</option>
+                  </select>
+                </div>
               </div>
             </div>
-
-            {/* <div className=" mt-5">
-              <h1 className="text-lg capitalize font-medium text-gray-800">
-                Prices
-              </h1>
-
-              <div className=" flex items-center flex-wrap gap-2 mt-1">
-                <select
-                  onChange={(e) => filterPrice(e.target.value)}
-                  id="countries"
-                  className="bg-gray-50 border border-gray-300  text-gray-900 rounded-lg  focus:ring-blue-500 focus:border-blue-500  p-4 italic "
-                >
-                  <option> Sort by price</option>
-                  <option value="15,999">Lowest</option>
-                  <option value="28,999">Average</option>
-                  <option value="70,999">Hightesst</option>
-                </select>
-              </div>
-            </div> */}
           </div>
           <div className=" shadow-md bg-white p-6 h-fit w-full lg:w-[68%]">
             <div>
@@ -188,7 +203,7 @@ const Products = ({ simplified }) => {
                             <Link to={`/product/${id}`}>
                               <img src={images[magic]} alt={name} />
                             </Link>
-                            <div className="absolute right-4 top-4 ">
+                            <div className="hidden lg:block absolute right-4 top-4 ">
                               <Link to={`/product/${id}`}>
                                 <div className=" w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white  bg-black/70">
                                   <BsEye size={25} />
@@ -227,11 +242,13 @@ const Products = ({ simplified }) => {
                             </div>
                           </div>
                           <div className=" mt-2 ">
-                            <h4 className="text-sm font-semibold uppercase text-orange-500 mb-2">
+                            <h4 className=" text-sm font-semibold uppercase text-orange-500 mb-1">
                               {category.slice(0, -1)}
                             </h4>
 
-                            <p className=" font-medium uppercase">{name}</p>
+                            <p className=" text-xs md:text-base font-medium  capitalize">
+                              {name}
+                            </p>
                             {rating === 0 && (
                               <div className=" flex gap-1  mb-1 text-yellow-400">
                                 <BsStarFill size={15} />

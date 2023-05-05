@@ -13,6 +13,28 @@ const Navbar = () => {
 
   return (
     <nav className="w-full  shadow-md fixed top-0 bg-white z-50 flex flex-col  ">
+      <div className=" bg-gray-800 p-2 w-full ">
+        <div className=" w-[90%] mx-auto items-center flex  justify-between">
+          <div className=" text-white hidden lg:visible">
+            Hotlines: +234 812 567 3456
+          </div>
+          <ul className="justify-center tracking-wide  capitalize text-white  flex gap-8 ">
+            <li className="hover:scale-105">
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li className="hover:scale-105">
+              <Link to={`/cart`}>cart</Link>
+            </li>
+            <li className="hover:scale-105">
+              <Link to={`/favorite-clothes`}>favorites</Link>
+            </li>
+          </ul>
+
+          <p className=" hidden lg:visible text-white text-sm">
+            Free shipping on purchase greater than 15,000
+          </p>
+        </div>
+      </div>
       <div className="w-[90%] h-[80px] mx-auto flex items-center justify-between">
         <Link to={"/"}>
           <h1 className=" text-xl lg:text-3xl font-bold uppercase">
@@ -51,34 +73,14 @@ const Navbar = () => {
               </p>
             </Link>
           </div>
-          <div className=" flex justify-center items-center relative  hover:scale-105 text-gray-700">
-            <BsSuitHeart size={30} />
-            {favorites.length > 0 && (
-              <div className=" absolute -top-1 left-5 text-sm bg-red-600 flex items-center justify-center text-gray-50 h-6 w-6 p-2 rounded-full"></div>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="hidden bg-gray-800 p-2 w-full ">
-        <div className=" w-[90%] mx-auto flex items-center justify-between flex-col">
-          <ul className=" text-sm uppercase text-gray-50 font-medium flex gap-8 ">
-            <li className="hover:scale-105">
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li className="hover:scale-105">
-              <Link to={`/category/shirts`}>shirts</Link>
-            </li>
-            <li className="hover:scale-105">
-              <Link to={`/category/trousers`}>trousers</Link>
-            </li>
-            <li className="hover:scale-105">
-              <Link to={`/category/shoes`}> shoes</Link>{" "}
-            </li>
-            <li className="hover:scale-105">
-              <Link to={`/category/Jackets`}>Jackets</Link>{" "}
-            </li>
-          </ul>
-          <p className="text-xs text-gray-50">Hotline:+234-801-234-5678</p>
+          <Link to={"/favorite-clothes"}>
+            <div className=" flex justify-center items-center relative  hover:scale-105 text-gray-700">
+              <BsSuitHeart size={30} />
+              {favorites.length > 0 && (
+                <div className=" absolute -top-1 left-5 text-sm bg-red-600 flex items-center justify-center text-gray-50 h-6 w-6 p-2 rounded-full"></div>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
     </nav>

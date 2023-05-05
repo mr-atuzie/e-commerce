@@ -21,20 +21,22 @@ const Category = ({ cat, heading, items, simplified }) => {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (simplified) {
-      setProducts(products.slice(0, 5));
-    }
-  }, [products, simplified, cat]);
+  // if (simplified) {
+  //   setProducts(products.slice(0, 5));
+  // }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (count === 3) {
-        setCount(0);
-      } else {
-        setCount(count + 1);
-      }
-    }, 5000);
+    const interval = () => {
+      setTimeout(() => {
+        if (count === 3) {
+          setCount(0);
+        } else {
+          setCount(count + 1);
+        }
+      }, 5000);
+    };
+
+    interval();
 
     return () => clearInterval(interval);
   }, [count]);
@@ -134,90 +136,179 @@ const Category = ({ cat, heading, items, simplified }) => {
                   No product found
                 </p>
               )}
-              {products?.map(({ id, name, desc, price, category, images }) => {
-                return (
-                  <article key={id}>
-                    <div>
-                      <div>
-                        <div className=" relative">
-                          <Link to={`/product/${id}`}>
-                            {images[count] ? (
-                              <img
-                                className="w-full h-full block bg-slate-50"
-                                src={images[count]}
-                                alt={name}
-                              />
-                            ) : (
-                              <div
-                                className="w-full h-full block bg-slate-200"
-                                src={images[count]}
-                                alt={name}
-                              ></div>
-                            )}
-                          </Link>
-                          <div className="hidden lg:block absolute right-4 top-4 ">
-                            <Link to={`/product/${id}`}>
-                              <div className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white  bg-black/70">
-                                <BsEye size={25} />
+              {simplified
+                ? products
+                    .slice(0, 5)
+                    .map(({ id, name, desc, price, category, images }) => {
+                      return (
+                        <article key={id}>
+                          <div>
+                            <div>
+                              <div className=" relative">
+                                <Link to={`/product/${id}`}>
+                                  {images[count] ? (
+                                    <img
+                                      className="w-full h-full block bg-slate-50"
+                                      src={images[count]}
+                                      alt={name}
+                                    />
+                                  ) : (
+                                    <div
+                                      className="w-full h-full block bg-slate-200"
+                                      src={images[count]}
+                                      alt={name}
+                                    ></div>
+                                  )}
+                                </Link>
+                                <div className="hidden lg:block absolute right-4 top-4 ">
+                                  <Link to={`/product/${id}`}>
+                                    <div className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white  bg-black/70">
+                                      <BsEye size={25} />
+                                    </div>
+                                  </Link>
+                                  <div
+                                    onClick={() =>
+                                      handleClick({
+                                        id,
+                                        name,
+                                        price,
+                                        category,
+                                        images,
+                                        quantity: 1,
+                                        totalPrice: Number(price) * 1,
+                                      })
+                                    }
+                                    className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white my-2 bg-black/70"
+                                  >
+                                    <HiOutlineShoppingCart size={25} />
+                                  </div>
+                                  <div
+                                    onClick={() =>
+                                      handleFav({
+                                        id,
+                                        name,
+                                        price,
+                                        category,
+                                        images,
+                                      })
+                                    }
+                                    className="cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black  text-white bg-black/70"
+                                  >
+                                    <BsSuitHeart size={25} />
+                                  </div>
+                                </div>
                               </div>
-                            </Link>
-                            <div
-                              onClick={() =>
-                                handleClick({
-                                  id,
-                                  name,
-                                  price,
-                                  category,
-                                  images,
-                                  quantity: 1,
-                                  totalPrice: Number(price) * 1,
-                                })
-                              }
-                              className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white my-2 bg-black/70"
-                            >
-                              <HiOutlineShoppingCart size={25} />
-                            </div>
-                            <div
-                              onClick={() =>
-                                handleFav({
-                                  id,
-                                  name,
-                                  price,
-                                  category,
-                                  images,
-                                })
-                              }
-                              className="cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black  text-white bg-black/70"
-                            >
-                              <BsSuitHeart size={25} />
+                              <div className=" ">
+                                <div className=" mt-2 ">
+                                  <p className=" text-xs md:text-base capitalize font-medium ">
+                                    {name}
+                                  </p>
+                                  <div className="flex gap-1 mb-1 text-yellow-400">
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarHalf size={15} />
+                                  </div>
+                                </div>
+                                <div className=" flex font-light text-sm md:text-lg items-start  ">
+                                  <span className="">&#x20A6;</span>
+                                  <p className="ml-1 ">
+                                    {new Intl.NumberFormat().format(price)}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className=" ">
-                          <div className=" mt-2 ">
-                            <p className=" text-xs md:text-base capitalize font-medium ">
-                              {name}
-                            </p>
-                            <div className="flex gap-1 mb-1 text-yellow-400">
-                              <BsStarFill size={15} />
-                              <BsStarFill size={15} />
-                              <BsStarFill size={15} />
-                              <BsStarFill size={15} />
-                              <BsStarHalf size={15} />
+                        </article>
+                      );
+                    })
+                : products.map(
+                    ({ id, name, desc, price, category, images }) => {
+                      return (
+                        <article key={id}>
+                          <div>
+                            <div>
+                              <div className=" relative">
+                                <Link to={`/product/${id}`}>
+                                  {images[count] ? (
+                                    <img
+                                      className="w-full h-full block bg-slate-50"
+                                      src={images[count]}
+                                      alt={name}
+                                    />
+                                  ) : (
+                                    <div
+                                      className="w-full h-full block bg-slate-200"
+                                      src={images[count]}
+                                      alt={name}
+                                    ></div>
+                                  )}
+                                </Link>
+                                <div className="hidden lg:block absolute right-4 top-4 ">
+                                  <Link to={`/product/${id}`}>
+                                    <div className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white  bg-black/70">
+                                      <BsEye size={25} />
+                                    </div>
+                                  </Link>
+                                  <div
+                                    onClick={() =>
+                                      handleClick({
+                                        id,
+                                        name,
+                                        price,
+                                        category,
+                                        images,
+                                        quantity: 1,
+                                        totalPrice: Number(price) * 1,
+                                      })
+                                    }
+                                    className=" cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black text-white my-2 bg-black/70"
+                                  >
+                                    <HiOutlineShoppingCart size={25} />
+                                  </div>
+                                  <div
+                                    onClick={() =>
+                                      handleFav({
+                                        id,
+                                        name,
+                                        price,
+                                        category,
+                                        images,
+                                      })
+                                    }
+                                    className="cursor-pointer w-12 h-12 flex justify-center items-center rounded-full hover:scale-105 hover:bg-black  text-white bg-black/70"
+                                  >
+                                    <BsSuitHeart size={25} />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className=" ">
+                                <div className=" mt-2 ">
+                                  <p className=" text-xs md:text-base capitalize font-medium ">
+                                    {name}
+                                  </p>
+                                  <div className="flex gap-1 mb-1 text-yellow-400">
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarFill size={15} />
+                                    <BsStarHalf size={15} />
+                                  </div>
+                                </div>
+                                <div className=" flex font-light text-sm md:text-lg items-start  ">
+                                  <span className="">&#x20A6;</span>
+                                  <p className="ml-1 ">
+                                    {new Intl.NumberFormat().format(price)}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div className=" flex font-light text-sm md:text-lg items-start  ">
-                            <span className="">&#x20A6;</span>
-                            <p className="ml-1 ">
-                              {new Intl.NumberFormat().format(price)}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
+                        </article>
+                      );
+                    }
+                  )}
             </div>
           </div>
         </div>
