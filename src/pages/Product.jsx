@@ -80,8 +80,8 @@ const Product = ({ simplified }) => {
                 <BsStarFill size={20} />
               </div>
 
-              <h2 className=" font-medium lg:text-lg uppercase mt-2 mb-1">
-                size: {size}
+              <h2 className=" font-medium text-sm  uppercase mt-2 mb-1">
+                size: <span className=" text-lg text-blue-700">{size}</span>
               </h2>
 
               <p className=" text-sm mt-2 text-gray-500">{desc}</p>
@@ -100,14 +100,14 @@ const Product = ({ simplified }) => {
                 <div className="border-2 border-gray-900 w-52 rounded-lg flex">
                   <button
                     onClick={() => handleQuantity("incr")}
-                    className=" text-lg flex-1 py-2 px-4 border-r border-gray-900"
+                    className=" text-lg flex-1 py-2 px-4 border-2 border-r border-gray-900"
                   >
                     +
                   </button>
                   <button className=" flex-1 py-2 px-4">{quantity}</button>
                   <button
                     onClick={() => handleQuantity("decr")}
-                    className=" text-lg flex-1 py-2 px-4  border-l border-gray-900"
+                    className=" text-lg flex-1 py-2 px-4 border-2   border-l border-gray-900"
                   >
                     -
                   </button>
@@ -126,7 +126,7 @@ const Product = ({ simplified }) => {
                       totalPrice: Number(price) * quantity,
                     })
                   }
-                  className="  bg-black  flex items-center justify-between  text-white px rounded-md-4 lg:px-6 py-3 "
+                  className="  bg-black  flex items-center justify-between  text-white px-4 rounded-md-4 lg:px-6 py-3 "
                 >
                   Add to Cart
                   <div className=" hidden lg:block ml-3 p-4 lg:px-6">
