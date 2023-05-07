@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import cartImg from "../assets/cart.svg";
 
 import { BsEye, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -18,9 +17,8 @@ const Favorites = () => {
   return (
     <div className=" bg-gray-50 py-8">
       {fav.length === 0 ? (
-        <div className=" h-[70vh] flex flex-col justify-center items-center">
-          <p className=" italic text-gray-600 mb-2">Cart is empty</p>
-          <img src={cartImg} className width={400} alt="" />
+        <div className=" min-h-[70vh] flex flex-col justify-center items-center">
+          <p className=" italic text-gray-600 mb-2">No product found</p>
         </div>
       ) : (
         <div className=" w-[98%] mx-auto mt-[110px]">

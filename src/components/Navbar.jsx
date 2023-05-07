@@ -14,11 +14,11 @@ const Navbar = () => {
   return (
     <nav className="w-full  shadow-md fixed top-0 bg-white z-50 flex flex-col  ">
       <div className=" bg-gray-800 p-2 w-full ">
-        <div className=" w-[90%] mx-auto items-center flex  justify-between">
-          <div className=" text-white hidden lg:visible">
+        <div className=" w-[90%] mx-auto items-center flex justify-center  lg:justify-between">
+          <div className=" text-white hidden lg:block">
             Hotlines: +234 812 567 3456
           </div>
-          <ul className="justify-center tracking-wide  capitalize text-white  flex gap-8 ">
+          <ul className="justify-center tracking-wide  capitalize text-white  flex gap-8 text-sm lg:text-base ">
             <li className="hover:scale-105">
               <Link to={"/"}>Home</Link>
             </li>
@@ -30,7 +30,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <p className=" hidden lg:visible text-white text-sm">
+          <p className=" hidden lg:block text-white text-sm">
             Free shipping on purchase greater than 15,000
           </p>
         </div>
