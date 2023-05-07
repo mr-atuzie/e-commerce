@@ -86,7 +86,7 @@ const Product = ({ simplified }) => {
 
               <p className=" mt-2 text-gray-700">{desc}</p>
 
-              <div className=" flex font-medium text-xl items-center   mt-2">
+              <div className=" flex font-light text-xl items-center   mt-2">
                 <span className="">&#x20A6;</span>
                 <p className="ml-1 ">
                   {new Intl.NumberFormat().format(price - 1750)}
@@ -111,7 +111,7 @@ const Product = ({ simplified }) => {
                   </button>
                 </div>
               </div>
-              <div className=" my-8 flex flex-col lg:flex-row  flex-wrap gap-4 ">
+              <div className=" my-8 flex   gap-4 ">
                 <button
                   onClick={() =>
                     handleClick({

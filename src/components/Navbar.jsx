@@ -35,9 +35,9 @@ const Navbar = () => {
           </p>
         </div>
       </div>
-      <div className="w-[90%] h-[80px] mx-auto flex items-center justify-between">
+      <div className="w-[90%] py-2 mx-auto flex items-center justify-between">
         <Link to={"/"}>
-          <h1 className=" text-xl lg:text-3xl font-bold uppercase">
+          <h1 className=" text-lg lg:text-3xl font-bold uppercase">
             THRIFT STORE
           </h1>
         </Link>
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="flex gap-2 lg:gap-4 items-center">
           <Link to={"/cart"}>
             <div className=" flex justify-center items-center relative  hover:scale-105 text-gray-700">
-              <HiOutlineShoppingCart size={30} />
+              <HiOutlineShoppingCart size={25} />
               {quantity > 0 && (
                 <div className=" absolute -top-1 left-5 text-sm bg-red-600 flex items-center justify-center text-gray-50 h-6 w-6 p-2 rounded-full">
                   {quantity}
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
           <Link to={"/favorite-clothes"}>
             <div className=" flex justify-center items-center relative  hover:scale-105 text-gray-700">
-              <BsSuitHeart size={30} />
+              <BsSuitHeart size={25} />
               {favorites.length > 0 && (
                 <div className=" absolute -top-1 left-5 text-sm bg-red-600 flex items-center justify-center text-gray-50 h-6 w-6 p-2 rounded-full"></div>
               )}
