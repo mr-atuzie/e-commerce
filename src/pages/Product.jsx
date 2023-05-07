@@ -84,7 +84,7 @@ const Product = ({ simplified }) => {
                 size: {size}
               </h2>
 
-              <p className=" mt-2 text-gray-700">{desc}</p>
+              <p className=" text-sm mt-2 text-gray-500">{desc}</p>
 
               <div className=" flex font-light text-xl items-center   mt-2">
                 <span className="">&#x20A6;</span>
@@ -93,19 +93,21 @@ const Product = ({ simplified }) => {
                 </p>
               </div>
               <div className=" mt-2">
-                <h2 className=" font-medium capitalize mb-1">quantity</h2>
+                <h2 className=" font-medium capitalize mb-1">
+                  Change quantity:
+                </h2>
 
-                <div className="border border-gray-600 w-52 rounded-lg flex">
+                <div className="border-2 border-gray-900 w-52 rounded-lg flex">
                   <button
                     onClick={() => handleQuantity("incr")}
-                    className=" text-lg flex-1 py-2 px-4 border-r border-gray-600"
+                    className=" text-lg flex-1 py-2 px-4 border-r border-gray-900"
                   >
                     +
                   </button>
                   <button className=" flex-1 py-2 px-4">{quantity}</button>
                   <button
                     onClick={() => handleQuantity("decr")}
-                    className=" text-lg flex-1 py-2 px-4  border-l border-gray-600"
+                    className=" text-lg flex-1 py-2 px-4  border-l border-gray-900"
                   >
                     -
                   </button>
@@ -124,10 +126,10 @@ const Product = ({ simplified }) => {
                       totalPrice: Number(price) * quantity,
                     })
                   }
-                  className="  bg-black  flex items-center justify-between  text-white px-6 py-3 "
+                  className="  bg-black  flex items-center justify-between  text-white px rounded-md-4 lg:px-6 py-3 "
                 >
                   Add to Cart
-                  <div className=" ml-3">
+                  <div className=" hidden lg:block ml-3 p-4 lg:px-6">
                     <HiOutlineShoppingCart size={25} />
                   </div>
                 </button>
@@ -142,10 +144,10 @@ const Product = ({ simplified }) => {
                       images,
                     })
                   }
-                  className=" bg-black  flex items-center justify-between text-white px-6 py-3 "
+                  className=" bg-black  flex items-center justify-between rounded-md text-white px-4 lg:px-6 py-3 "
                 >
                   Add to Favorites
-                  <div className=" ml-3">
+                  <div className="hidden lg:block ml-3">
                     <BsSuitHeart size={25} />
                   </div>
                 </button>
