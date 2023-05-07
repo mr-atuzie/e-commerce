@@ -17,8 +17,10 @@ const Favorites = () => {
   return (
     <div className=" bg-gray-50 py-8">
       {fav.length === 0 ? (
-        <div className=" min-h-[70vh] flex flex-col justify-center items-center">
-          <p className=" italic text-gray-600 mb-2">No product found</p>
+        <div className=" min-h-[80vh] flex flex-col justify-center items-center">
+          <p className=" italic text-gray-600 mb-2">
+            You haven't added any item
+          </p>
         </div>
       ) : (
         <div className=" w-[98%] mx-auto mt-[110px]">
