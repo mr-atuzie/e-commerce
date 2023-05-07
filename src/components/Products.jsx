@@ -177,7 +177,7 @@ const Products = ({ simplified }) => {
           <div className=" shadow-md bg-white p-6 h-fit w-full lg:w-[68%]">
             <div>
               {cate === "all" ? (
-                <p className=" text-gray-500 mb-4 italic ">
+                <p className=" text-sm md:text-sm text-gray-500 mb-4 italic ">
                   All our clothes - {products.length} items
                 </p>
               ) : (

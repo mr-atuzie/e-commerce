@@ -84,7 +84,7 @@ const Category = ({ cat, heading, items, simplified }) => {
                 <h1 className=" font-semibold text-lg md:text-2xl  capitalize">
                   {heading} {cat}
                 </h1>
-                <p className=" text-sm md:text-sm text-gray-600  capitalize">
+                <p className=" text-xs md:text-sm text-gray-600  capitalize">
                   here are the top seller'sn for nike {cat}
                 </p>
               </div>
